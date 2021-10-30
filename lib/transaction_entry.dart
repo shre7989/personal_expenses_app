@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'models/transaction.dart';
 
 class TransactionEntry extends StatefulWidget {
-  final List<Transaction> _transactions;
   final Function _addNewTransaction;
 
-  TransactionEntry(this._transactions, this._addNewTransaction);
+  TransactionEntry(this._addNewTransaction);
 
   @override
   State<TransactionEntry> createState() => _TransactionEntryState();
@@ -17,12 +16,10 @@ class _TransactionEntryState extends State<TransactionEntry> {
   final amountController = TextEditingController();
 
   void submitData() {
-    print(widget._transactions);
-    widget._addNewTransaction(
-      titleController.text,
-      amountController.text,
-      widget._transactions,
-    );
+    String title = titleController.text;
+    String amount = amountController.text;
+
+    widget._addNewTransaction(title, amount);
 
     Navigator.of(context).pop();
   }

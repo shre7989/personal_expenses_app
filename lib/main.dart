@@ -16,6 +16,20 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
+  final List<Transaction> _transactions = [
+    Transaction(
+      id: "t1",
+      title: "New Shoes",
+      amountSpent: 150,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: "t2",
+      title: "Grocery",
+      amountSpent: 50,
+      date: DateTime.now(),
+    ),
+  ];
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -23,23 +37,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    final List<Transaction> _transactions = [
-      Transaction(
-        id: "t1",
-        title: "New Shoes",
-        amountSpent: 150,
-        date: DateTime.now(),
-      ),
-      Transaction(
-        id: "t2",
-        title: "Grocery",
-        amountSpent: 50,
-        date: DateTime.now(),
-      ),
-    ];
-
-    void _addNewTransaction(
-        String title, String amount, List<Transaction> transactions) {
+    void _addNewTransaction(String title, String amount) {
       double amountSpent = double.parse(amount);
       String id = DateTime.now().toString();
 
@@ -50,8 +48,8 @@ class _MyHomePageState extends State<MyHomePage> {
         date: DateTime.now(),
       );
       setState(() {
-        _transactions.add(newTransaction);
-        print(_transactions.length);
+        widget._transactions.add(newTransaction);
+        print("length:  ${widget._transactions.length}");
       });
     }
 
@@ -59,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
       showModalBottomSheet(
         context: ctx,
         builder: (_) {
-          return TransactionEntry(_transactions, _addNewTransaction);
+          return TransactionEntry(_addNewTransaction);
         },
       );
     }
@@ -77,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
           style: TextStyle(fontWeight: FontWeight.w400),
         ),
       ),
-      body: ListView(
+      body: Column(
         children: <Widget>[
           Container(
             width: double.infinity,
@@ -86,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
               elevation: 2,
             ),
           ),
-          TransactionList(_transactions),
+          TransactionList(widget._transactions),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
