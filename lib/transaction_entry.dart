@@ -30,6 +30,7 @@ class _TransactionEntryState extends State<TransactionEntry> {
       elevation: 5,
       margin: EdgeInsets.all(5),
       child: Container(
+        height: 300,
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,

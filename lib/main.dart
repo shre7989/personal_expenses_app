@@ -9,7 +9,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter App',
+      title: 'Personal Expenses',
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+        fontFamily: 'QuickSand',
+      ),
       home: MyHomePage(),
     );
   }
@@ -72,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.purple,
         title: Text(
           'Personal Expenses',
-          style: TextStyle(fontWeight: FontWeight.w400),
+          style: TextStyle(fontWeight: FontWeight.w400, fontFamily: 'OpenSans'),
         ),
       ),
       body: Column(
@@ -89,6 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
+        elevation: 5,
         child: Icon(
           Icons.add,
           color: Colors.white,

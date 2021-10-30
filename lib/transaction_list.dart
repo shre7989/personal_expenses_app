@@ -45,8 +45,8 @@ class TransactionList extends StatelessWidget {
                     Text(
                       _transactions[idx].title,
                       style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
@@ -55,7 +55,7 @@ class TransactionList extends StatelessWidget {
                           .format(_transactions[idx].date),
                       style: TextStyle(
                         fontSize: 12,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.bold,
                         color: Colors.grey,
                       ),
                     ),
