@@ -20,20 +20,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  final List<Transaction> _transactions = [
-    Transaction(
-      id: "t1",
-      title: "New Shoes",
-      amountSpent: 150,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: "t2",
-      title: "Grocery",
-      amountSpent: 50,
-      date: DateTime.now(),
-    ),
-  ];
+  final List<Transaction> _transactions = [];
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -54,6 +41,13 @@ class _MyHomePageState extends State<MyHomePage> {
       setState(() {
         widget._transactions.add(newTransaction);
         print("length:  ${widget._transactions.length}");
+      });
+    }
+
+    void _deleteTransaction(Transaction transaction) {
+      setState(() {
+        print(widget._transactions.length);
+        widget._transactions.remove(transaction);
       });
     }
 
@@ -88,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
               elevation: 2,
             ),
           ),
-          TransactionList(widget._transactions),
+          TransactionList(widget._transactions, _deleteTransaction),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,

@@ -30,7 +30,7 @@ class _TransactionEntryState extends State<TransactionEntry> {
       elevation: 5,
       margin: EdgeInsets.all(5),
       child: Container(
-        height: 300,
+        height: 350,
         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
@@ -42,7 +42,7 @@ class _TransactionEntryState extends State<TransactionEntry> {
                   'Title',
                   style: TextStyle(
                     color: Colors.purple,
-                    fontWeight: FontWeight.w400,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
@@ -54,7 +54,7 @@ class _TransactionEntryState extends State<TransactionEntry> {
                   'Amount',
                   style: TextStyle(
                     color: Colors.purple,
-                    fontWeight: FontWeight.w400,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
@@ -66,6 +66,8 @@ class _TransactionEntryState extends State<TransactionEntry> {
               child: Text(
                 "Add Transaction",
                 style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
                   color: Colors.purple,
                 ),
               ),
