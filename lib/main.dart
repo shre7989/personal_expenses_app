@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_complete_guide/transaction_list.dart';
-import './transaction_entry.dart';
+import 'package:flutter_complete_guide/widgets/chart.dart';
+import 'package:flutter_complete_guide/widgets/transaction_list.dart';
+import 'widgets/transaction_entry.dart';
 import 'models/transaction.dart';
+import 'widgets/chart.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,46 +22,56 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  final List<Transaction> _transactions = [];
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final List<Transaction> _transactions = [];
+
+  List<Transaction> get _recentTransactions {
+    return _transactions.where((tx) {
+      return tx.date.isAfter(DateTime.now().subtract(
+        Duration(days: 7),
+      ));
+    }).toList();
+  }
+
+  void _addNewTransaction(String title, String amount, String type) {
+    double amountSpent = double.parse(amount);
+    String id = DateTime.now().toString();
+
+    final newTransaction = Transaction(
+      id: id,
+      title: title,
+      amountSpent: amountSpent,
+      type: type,
+      date: DateTime.now(),
+    );
+    setState(() {
+      _transactions.add(newTransaction);
+      print("length:  ${_transactions.length}");
+    });
+  }
+
+  void _deleteTransaction(Transaction transaction) {
+    setState(() {
+      print(_transactions.length);
+      _transactions.remove(transaction);
+    });
+  }
+
+  void _openAddNewTransactionSheet(BuildContext ctx) {
+    showModalBottomSheet(
+      context: ctx,
+      builder: (_) {
+        return TransactionEntry(_addNewTransaction);
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    void _addNewTransaction(String title, String amount) {
-      double amountSpent = double.parse(amount);
-      String id = DateTime.now().toString();
-
-      final newTransaction = Transaction(
-        id: id,
-        title: title,
-        amountSpent: amountSpent,
-        date: DateTime.now(),
-      );
-      setState(() {
-        widget._transactions.add(newTransaction);
-        print("length:  ${widget._transactions.length}");
-      });
-    }
-
-    void _deleteTransaction(Transaction transaction) {
-      setState(() {
-        print(widget._transactions.length);
-        widget._transactions.remove(transaction);
-      });
-    }
-
-    void _openAddNewTransactionSheet(BuildContext ctx) {
-      showModalBottomSheet(
-        context: ctx,
-        builder: (_) {
-          return TransactionEntry(_addNewTransaction);
-        },
-      );
-    }
-
     return Scaffold(
       appBar: AppBar(
         elevation: 7,
@@ -75,17 +87,11 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Column(
         children: <Widget>[
-          Container(
-            width: double.infinity,
-            child: Card(
-              child: Text("Chart"),
-              elevation: 2,
-            ),
-          ),
-          TransactionList(widget._transactions, _deleteTransaction),
+          Chart(_recentTransactions),
+          TransactionList(_transactions, _deleteTransaction),
         ],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       floatingActionButton: FloatingActionButton(
         elevation: 5,
         child: Icon(
