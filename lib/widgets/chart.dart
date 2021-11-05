@@ -59,21 +59,25 @@ class Chart extends StatelessWidget {
                 margin: EdgeInsets.symmetric(horizontal: 5, vertical: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: groupedTransactionValues.map(
-                    (data) {
-                      if (totalSpending == 0)
-                        return ChartBar(
-                          label: data['day'],
-                        );
-                      else
-                        return ChartBar(
-                          label: data['day'],
-                          spendingAmount: data['amount'],
-                          spendingPercentForWeek:
-                              (data['amount'] as double) / totalSpending,
-                        );
-                    },
-                  ).toList(),
+                  children: groupedTransactionValues
+                      .map(
+                        (data) {
+                          if (totalSpending == 0)
+                            return ChartBar(
+                              label: data['day'],
+                            );
+                          else
+                            return ChartBar(
+                              label: data['day'],
+                              spendingAmount: data['amount'],
+                              spendingPercentForWeek:
+                                  (data['amount'] as double) / totalSpending,
+                            );
+                        },
+                      )
+                      .toList()
+                      .reversed
+                      .toList(),
                 ),
               ),
             ],

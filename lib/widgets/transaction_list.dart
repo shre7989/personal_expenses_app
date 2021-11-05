@@ -84,7 +84,7 @@ class TransactionList extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    flex: 11,
+                    flex: 9,
                     child: ListView.builder(
                       shrinkWrap: true,
                       itemBuilder: (ctx, idx) {
