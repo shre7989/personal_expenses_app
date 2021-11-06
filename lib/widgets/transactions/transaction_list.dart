@@ -11,10 +11,12 @@ import 'info_label.dart';
 class TransactionList extends StatelessWidget {
   final List<Transaction> _transactions;
   final Function _deleteTransaction;
+  final Function _clearTransaction;
 
   TransactionList(
     this._transactions,
     this._deleteTransaction,
+    this._clearTransaction,
   );
 
   @override
@@ -31,7 +33,8 @@ class TransactionList extends StatelessWidget {
                   children: [
                     Expanded(
                       flex: 2,
-                      child: TransactionListButtons(),
+                      child: TransactionListButtons(
+                          _transactions, _clearTransaction),
                     ),
                     Expanded(
                       flex: 13,

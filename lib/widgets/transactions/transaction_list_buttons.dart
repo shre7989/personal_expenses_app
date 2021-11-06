@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/models/transaction.dart';
 
 class TransactionListButtons extends StatelessWidget {
+  final List<Transaction> _transactions;
+  final Function _clearTransactions;
+
+  TransactionListButtons(this._transactions, this._clearTransactions);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,7 +28,9 @@ class TransactionListButtons extends StatelessWidget {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 2, vertical: 5),
             child: IconButton(
-              onPressed: null,
+              onPressed: () {
+                _clearTransactions(_transactions);
+              },
               icon: Icon(
                 Icons.clear,
                 color: Colors.red,

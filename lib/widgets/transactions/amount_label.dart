@@ -18,12 +18,15 @@ class AmountLabel extends StatelessWidget {
           ),
         ),
       ),
-      child: Text(
-        amountLabel,
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 12,
-          color: Colors.green,
+      child: FittedBox(
+        fit: BoxFit.contain,
+        child: Text(
+          amountLabel,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 9,
+            color: Colors.green,
+          ),
         ),
       ),
     );

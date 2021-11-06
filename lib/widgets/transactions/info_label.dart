@@ -14,7 +14,7 @@ class InfoLabel extends StatelessWidget {
         Text(
           transactionTitle,
           style: TextStyle(
-            fontSize: 14,
+            fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
         ),

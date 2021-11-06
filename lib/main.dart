@@ -37,7 +37,8 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
-  void _addNewTransaction(String title, String amount, String type) {
+  void _addNewTransaction(
+      String title, String amount, String type, DateTime date) {
     double amountSpent = double.parse(amount);
     String id = DateTime.now().toString();
 
@@ -46,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
       title: title,
       amountSpent: amountSpent,
       type: type,
-      date: DateTime.now(),
+      date: date,
     );
     setState(() {
       _transactions.add(newTransaction);
@@ -58,6 +59,12 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       print(_transactions.length);
       _transactions.remove(transaction);
+    });
+  }
+
+  void _clearTransaction(List<Transaction> transactionList) {
+    setState(() {
+      transactionList.clear();
     });
   }
 
@@ -88,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: <Widget>[
           Chart(_recentTransactions),
-          TransactionList(_transactions, _deleteTransaction),
+          TransactionList(_transactions, _deleteTransaction, _clearTransaction),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
