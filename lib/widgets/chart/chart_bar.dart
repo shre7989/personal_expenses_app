@@ -15,6 +15,13 @@ class ChartBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
+        Text(
+          '\$${spendingAmount.toString()}',
+          style: TextStyle(
+              fontSize: 12,
+              color: Colors.green[600],
+              fontWeight: FontWeight.bold),
+        ),
         SizedBox(
           height: 4,
         ),
@@ -24,7 +31,6 @@ class ChartBar extends StatelessWidget {
           child: Stack(
             alignment: Alignment.bottomCenter,
             children: [
-              Text(spendingAmount.toString()),
               Container(
                 decoration: BoxDecoration(
                   border: Border.all(

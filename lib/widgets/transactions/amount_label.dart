@@ -22,7 +22,7 @@ class AmountLabel extends StatelessWidget {
         amountLabel,
         style: TextStyle(
           fontWeight: FontWeight.bold,
-          fontSize: 13,
+          fontSize: 12,
           color: Colors.green,
         ),
       ),
