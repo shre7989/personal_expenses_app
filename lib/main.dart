@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_complete_guide/widgets/chart.dart';
-import 'package:flutter_complete_guide/widgets/transaction_list.dart';
-import 'widgets/transaction_entry.dart';
+import 'package:flutter_complete_guide/widgets/chart/chart.dart';
+import 'package:flutter_complete_guide/widgets/transactions/transaction_list.dart';
+import 'widgets/transactions/transaction_entry.dart';
 import 'models/transaction.dart';
-import 'widgets/chart.dart';
+import 'widgets/chart/chart.dart';
 
 void main() => runApp(MyApp());
 
