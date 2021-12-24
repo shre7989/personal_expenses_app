@@ -1,16 +1,33 @@
-# personal_expenses_app
+# Personal Expenses App
+A new Flutter project that helps keep track of your finances and organizes them into different categories. 
 
-A new Flutter project.
+![expenseapp](https://user-images.githubusercontent.com/55064602/147312466-82d0b269-db92-4531-b487-f0c05d3ae547.png)
 
 ## Getting Started
+* Clone the repo and enter the command *flutter get pub* in the terminal to install all the dependencies.
+* Emulate an android device using the android studio
 
-This project is a starting point for a Flutter application.
+## Tutorial
+### Add transactions
+* To add transactions press the + button at the bottom left corner of the screen.
+* A new modal window will pop up:
+  - **Title:** Enter the title for the transactions
+  - **Amount:** Enter the transaction amount
+  - **Type:** Press the type button to openup a scroll of options for transaction type. Click the type of transaction you want to enter.
+  - **Date:** Enter the date for the transaction by clicking **Choose Date** which will open up a new modal window for you to select date.
+  - Click the **Add transaction** button to add this transactions to the list of transactions. 
 
-A few resources to get you started if this is your first Flutter project:
+### Delete Transactions
+* Each transaction has a red bin icon at the right end of its associated card. Press that red bin button to delete the associated transaction.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### Clear Transactions
+* To clear the transactions press the  red **x** button on the top right of the card where the transactions are located.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Future Works
+* Monthly and Yearly snapshot of expenses
+* Graph view of expenses
+* Filter expenses by type
+* Set up limit for expense type
+
+
+
